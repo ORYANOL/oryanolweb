@@ -6,7 +6,7 @@ const icon2 = document.getElementById('icon2');
 // Function to trigger haptic feedback
 function vibrate() {
     if (navigator.vibrate) {
-        navigator.vibrate(200); // Vibrate for 200 milliseconds
+        navigator.vibrate(50); // Vibrate for 50 milliseconds
     }
 }
 
