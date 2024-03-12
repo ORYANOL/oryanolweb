@@ -1,0 +1,117 @@
+:root {
+    --primary-color: #fff;
+    --secondary-color: #000;
+    --tertiary-color: #c71615;
+}
+
+.dark-theme {
+    --primary-color: #121212;
+    --secondary-color: #bebebe;
+    --tertiary-color: #CF6679;
+}
+
+body {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    transition: ease-out 0.5s;
+    font-family: 'Roboto', sans-serif;
+}
+
+.titler, .social-links a {
+    color: var(--tertiary-color);
+}
+
+h2 {
+    font-weight: bold;
+}
+
+#icon {
+    width: auto;
+    cursor: pointer;
+    animation: breathing 8s infinite;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    margin-top: 120px;
+}
+
+#icon2 {
+    width: 30px;
+    height: 30px;
+    transition: 0.5s;
+    margin-top: -50px;
+}
+
+@keyframes breathing {
+    0% {
+        transform: scale(0.9);
+    }
+    25% {
+        transform: scale(1.1);
+    }
+    50% {
+        transform: scale(0.9);
+    }
+    75% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(0.9);
+    }
+}
+
+.description {
+    margin-top: 10px;
+}
+
+.social-links {
+    margin-top: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.social-links a {
+    font-size: 65px;
+    transition: 0.5s;
+}
+
+.social-links a:hover {
+    font-size: 75px;
+}
+
+.social-links a:hover .fa-twitter {
+    color: #1DA1F2;
+}
+
+.social-links a:hover .fa-facebook {
+    color: #3b5998;
+}
+
+.social-links a:hover .fa-instagram {
+    color: #8a3ab9;
+}
+
+.social-links a:hover .fa-youtube {
+    color: #FF0000;
+}
+
+.social-links a:hover .fa-linkedin {
+    color: #2867B2;
+}
+
+.social-links a:hover .fa-reddit {
+    color: #FF4500;
+}
+
+.social-links a:hover .fa-medium {
+    color: #66CDAA;
+}
+
+.social-links a:hover .fa-globe {
+    color: var(--secondary-color);
+}
+
+footer {
+    margin-top: 80px;
+}
