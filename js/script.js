@@ -3,6 +3,13 @@ const body = document.body;
 const icon = document.getElementById('icon');
 const icon2 = document.getElementById('icon2');
 
+// Function to trigger haptic feedback
+function vibrate() {
+    if (navigator.vibrate) {
+        navigator.vibrate(200); // Vibrate for 200 milliseconds
+    }
+}
+
 // Function to toggle the dark theme
 function toggleDarkMode() {
     body.classList.toggle('dark-theme');
@@ -42,5 +49,8 @@ if (storedTheme === 'dark') {
 }
 
 // Add event listeners for toggling the dark mode
-icon.addEventListener('click', toggleDarkMode);
+icon.addEventListener('click', () => {
+    vibrate(); // Trigger haptic feedback
+    toggleDarkMode();
+});
 icon2.addEventListener('click', toggleDarkMode);
