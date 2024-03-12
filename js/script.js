@@ -8,6 +8,9 @@ function vibrate() {
     if (navigator.vibrate) {
         navigator.vibrate(50); // Vibrate for 50 milliseconds
     }
+    else if (window.navigator.vibrate) {
+        window.navigator.vibrate(50); // Vibrate for 60 milliseconds (iOS)
+    }
 }
 
 // Function to toggle the dark theme
