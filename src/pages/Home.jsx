@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import SocialLinks from '../components/SocialLinks.jsx';
 import { ThemeContext } from '../contexts/ThemeContext.jsx';
+import profileImg from '/img/profile.png';
 
 const Home = () => {
   const { toggleDarkMode } = useContext(ThemeContext);
@@ -10,7 +11,7 @@ const Home = () => {
       <div className="col-md-12">
         <div className="text-center">
           <img
-            src="/img/profile.png"
+            src={profileImg}
             alt="Profile image"
             className="profile-img rounded"
             onClick={toggleDarkMode}

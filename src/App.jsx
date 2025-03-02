@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom'; // Remove BrowserRouter import
 import { ThemeProvider } from './contexts/ThemeContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -10,20 +10,18 @@ import './styles/main.css';
 function App() {
   return (
     <ThemeProvider>
-      <Router>
-        <div id="app-container">
-          <div className="container-fluid">
-            <Header />
-            <main>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/webtools" element={<IOWebTools />} />
-              </Routes>
-            </main>
-            <Footer />
-          </div>
+      <div id="app-container">
+        <div className="container-fluid">
+          <Header />
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/webtools" element={<IOWebTools />} />
+            </Routes>
+          </main>
+          <Footer />
         </div>
-      </Router>
+      </div>
     </ThemeProvider>
   );
 }
