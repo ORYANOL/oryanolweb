@@ -36,7 +36,7 @@ export const ThemeProvider = ({ children }) => {
     setDarkMode(!darkMode);
     // Trigger haptic feedback if available
     if (navigator.vibrate) {
-      navigator.vibrate(50);
+      navigator.vibrate(10);
     }
   };
 

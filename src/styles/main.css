@@ -72,6 +72,15 @@ h4 {
     transition: 0.5s;
     margin-top: -50px;
     cursor: pointer;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dark-theme .theme-toggle-icon:hover {
+    text-shadow: 0 0 10px #ffcc00, 0 0 15px #ffcc00;
+    animation: logo-spin 20s linear infinite;
 }
 
 @keyframes breathing {
@@ -230,7 +239,7 @@ h4 {
     border-radius: 34px;
 }
 
-.slider:before {
+/* .slider:before {
     position: absolute;
     content: "";
     height: 26px;
@@ -240,7 +249,7 @@ h4 {
     background-color: white;
     transition: 0.4s;
     border-radius: 50%;
-}
+} */
 
 input:checked+.slider {
     background-color: var(--tertiary-color);
@@ -460,7 +469,7 @@ button:active {
     border-radius: 34px;
 }
 
-.password-generator-container .slider:before {
+/* .password-generator-container .slider:before {
     position: absolute;
     content: "";
     height: 26px;
@@ -470,7 +479,7 @@ button:active {
     background-color: white;
     transition: 0.4s;
     border-radius: 50%;
-}
+} */
 
 .password-generator-container input:checked+.slider {
     background-color: var(--tertiary-color);

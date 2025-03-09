@@ -61,7 +61,7 @@ const PasswordGenerator = () => {
   return (
     <div className="password-generator-container">
       <div className="toggle-container card-content description">
-        <label>Random Characters</label>
+        <label>Characters</label>
         <label className="toggle">
           <input
             type="checkbox"
@@ -70,7 +70,7 @@ const PasswordGenerator = () => {
           />
           <span className="slider"></span>
         </label>
-        <label>Random Words</label>
+        <label>Words</label>
       </div>
 
       <div className="length-slider-container">

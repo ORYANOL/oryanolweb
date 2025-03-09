@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import SocialLinks from '../components/SocialLinks.jsx';
 import { ThemeContext } from '../contexts/ThemeContext.jsx';
 import profileImg from '/img/profile.png';
+import TestProgressBar from '../components/TestProgressBar.jsx';
 
 const Home = () => {
   const { toggleDarkMode } = useContext(ThemeContext);
@@ -21,6 +22,7 @@ const Home = () => {
           <h2>Yannick Olivier Orounla</h2>
           <h4><small>Aerospace Engineer and Tech Enthusiast</small></h4>
         </div>
+        <TestProgressBar />
         <SocialLinks />
       </div>
     </div>

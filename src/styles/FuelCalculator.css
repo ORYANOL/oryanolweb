@@ -1,6 +1,6 @@
 .fuel-calculator-container {
     width: 100%;
-    padding: 20px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -167,7 +167,7 @@
     width: 100%;
     height: 8px;
     border-radius: 4px;
-    background: #ddd;
+    /* background: #ddd; */
     outline: none;
     -webkit-appearance: none;
     position: relative;
