@@ -37,6 +37,11 @@ main {
     flex: 1;
 }
 
+.titler {
+    font-size: 30px;
+    font-weight: bold;
+}
+
 .titler,
 .social-links a {
     color: var(--tertiary-color);
@@ -70,7 +75,7 @@ h4 {
     width: 30px;
     height: 30px;
     transition: 0.5s;
-    margin-top: -50px;
+    margin-top: -60px;
     cursor: pointer;
     font-size: 30px;
     display: flex;
