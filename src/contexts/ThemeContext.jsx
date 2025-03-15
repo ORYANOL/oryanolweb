@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
+import StarryBackground from '../components/StarryBackground';
 
 export const ThemeContext = createContext();
 
@@ -42,6 +43,7 @@ export const ThemeProvider = ({ children }) => {
 
   return (
     <ThemeContext.Provider value={{ darkMode, toggleDarkMode }}>
+      {darkMode && <StarryBackground />}
       {children}
     </ThemeContext.Provider>
   );

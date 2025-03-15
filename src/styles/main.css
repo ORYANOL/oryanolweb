@@ -3,6 +3,7 @@
     --secondary-color: #000;
     --tertiary-color: #c71615;
     --quaternary-color: #fff;
+    --body-background-color: #fff;
     --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -11,6 +12,7 @@
     --secondary-color: #bebebe;
     --tertiary-color: #CF6679;
     --quaternary-color: #1E1E1E;
+    --body-background-color: #121212;
     --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -21,10 +23,25 @@ body {
 }
 
 body {
-    background-color: var(--primary-color);
+    background-color: var(--body-background-color);
     color: var(--secondary-color);
     transition: ease-out 0.5s;
     font-family: 'Roboto', sans-serif;
+}
+
+body.dark-theme {
+    /* Your existing styles will be here */
+    background-color: var(--body-background-color);
+
+    /* Add this line to make the background slightly see-through */
+    background-color: rgba(18, 18, 18, 0.75);
+    /* 75% opacity version of #121212 */
+
+    /* Add a gradient behind everything */
+    background-image: linear-gradient(to bottom, #000000, #121212);
+
+    /* Ensure content still displays properly */
+    color: var(--secondary-color);
 }
 
 #root {
