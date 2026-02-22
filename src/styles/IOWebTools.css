@@ -22,9 +22,7 @@
     border: 2px solid var(--shadow-color);
     border-radius: 12px;
     padding: 10px;
-    margin-bottom: 40px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    min-height: 580px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -47,10 +45,11 @@
     font-size: 1.8rem;
 }
 
-/* Grid Layout */
+/* Grid Layout — auto-fill scales to any number of tools */
 .tools-grid {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 32px;
 }
 
 /* Ensure calculator container gets proper width */
@@ -60,28 +59,41 @@
 
 }
 
-/* Responsive layout */
+.back-home-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--tertiary-color);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    opacity: 0.85;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.back-home-link:hover {
+    opacity: 1;
+    transform: translateX(-3px);
+    text-decoration: none;
+    color: var(--tertiary-color);
+}
+
 @media (max-width: 768px) {
     .io-web-tools-container {
         padding: 20px 10px;
     }
 
     .tool-container {
-        margin-bottom: 20px;
         padding: 5px;
-        margin-left: 5px;
-        margin-right: 5px;
-        width: calc(100% - 10px);
     }
-}
 
-@media (min-width: 992px) {
     .tools-grid {
-        flex-direction: row;
-        gap: 40px;
+        grid-template-columns: 1fr;
     }
 
-    .tool-container {
-        flex: 1;
+    /* URL Cleaner is most-used on mobile — float it to the top */
+    .tool-container:nth-child(3) {
+        order: -1;
     }
 }

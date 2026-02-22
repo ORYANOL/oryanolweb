@@ -30,6 +30,9 @@ function TestProgressBar() {
 
   return (
     <div className="progress-container">
+      <p className="year-progress-label">
+        {currentYear} is <span className="year-progress-pct">{progressPercentage}</span> complete
+      </p>
       <div className="new-progress-bar">
         <div
           className="new-progress-bar-fill"

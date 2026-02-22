@@ -3,10 +3,23 @@
     width: 100%;
     border: none;
     padding: 20px;
-    margin: 20px;
+    margin: 20px auto;
     vertical-align: top;
     display: inline-block;
     gap: 20px;
+}
+
+.year-progress-label {
+    font-size: 14px;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+    opacity: 0.75;
+    letter-spacing: 0.03em;
+}
+
+.year-progress-pct {
+    font-weight: bold;
+    color: var(--tertiary-color);
 }
 
 
