@@ -279,11 +279,43 @@ const URLCleaner = () => {
     const [wasRedirect, setWasRedirect] = useState(false);
     const [error, setError] = useState('');
     const [copySuccess, setCopySuccess] = useState(false);
+    const [batchMode, setBatchMode] = useState(false);
+    const [batchResults, setBatchResults] = useState([]);
+    const [batchCopySuccess, setBatchCopySuccess] = useState(false);
 
     const handleInput = (e) => {
         const raw = e.target.value;
         setInputURL(raw);
         setCopySuccess(false);
+        setBatchCopySuccess(false);
+
+        if (batchMode) {
+            // Batch processing: newline-separated
+            const lines = raw.split('\n').map(l => l.trim()).filter(Boolean);
+            if (lines.length === 0) {
+                setBatchResults([]);
+                return;
+            }
+            const results = lines.map((ln) => {
+                try {
+                    const { clean, removed } = cleanURL(ln);
+                    const inputHost = new URL(/^https?:\/\//i.test(ln) ? ln : `https://${ln}`).hostname;
+                    const outputHost = new URL(clean).hostname;
+                    return {
+                        input: ln,
+                        clean,
+                        removed,
+                        isClean: removed.length === 0 && inputHost === outputHost,
+                        wasRedirect: inputHost !== outputHost,
+                        error: null,
+                    };
+                } catch (err) {
+                    return { input: ln, clean: '', removed: [], isClean: false, wasRedirect: false, error: 'Invalid URL' };
+                }
+            });
+            setBatchResults(results);
+            return;
+        }
 
         if (!raw.trim()) {
             setCleanedURL('');
@@ -339,21 +371,78 @@ const URLCleaner = () => {
         setWasRedirect(false);
         setError('');
         setCopySuccess(false);
+        setBatchResults([]);
+        setBatchCopySuccess(false);
+    };
+
+    const toggleBatch = () => {
+        const next = !batchMode;
+        setBatchMode(next);
+        setInputURL('');
+        setCleanedURL('');
+        setRemovedParams([]);
+        setIsClean(false);
+        setWasRedirect(false);
+        setError('');
+        setBatchResults([]);
+        setCopySuccess(false);
+        setBatchCopySuccess(false);
+    };
+
+    const copyBatchAll = async () => {
+        if (!batchResults || batchResults.length === 0) return;
+        const lines = batchResults.map(r => r.clean || '').filter(Boolean).join('\n');
+        if (!lines) return;
+        try {
+            await navigator.clipboard.writeText(lines);
+            setBatchCopySuccess(true);
+            setTimeout(() => setBatchCopySuccess(false), 2000);
+        } catch {
+            const ta = document.createElement('textarea');
+            ta.value = lines;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            setBatchCopySuccess(true);
+            setTimeout(() => setBatchCopySuccess(false), 2000);
+        }
     };
 
     return (
         <div className="url-cleaner-container">
 
             {/* Input */}
+            <div className="toggle-container" style={{ marginBottom: 8 }}>
+                <label>Single</label>
+                <label className="toggle">
+                    <input type="checkbox" checked={batchMode} onChange={toggleBatch} />
+                    <span className="slider"></span>
+                </label>
+                <label>Batch</label>
+            </div>
+
             <div className="url-input-wrapper">
-                <input
-                    type="text"
-                    className="url-input"
-                    placeholder="Paste any URL here…"
-                    value={inputURL}
-                    onChange={handleInput}
-                    spellCheck={false}
-                />
+                {batchMode ? (
+                    <textarea
+                        className="url-textarea"
+                        placeholder="Paste newline-separated URLs…"
+                        value={inputURL}
+                        onChange={handleInput}
+                        spellCheck={false}
+                        rows={6}
+                    />
+                ) : (
+                    <input
+                        type="text"
+                        className="url-input"
+                        placeholder="Paste any URL here…"
+                        value={inputURL}
+                        onChange={handleInput}
+                        spellCheck={false}
+                    />
+                )}
+
                 {inputURL && (
                     <button className="url-clear-btn" onClick={handleClear} title="Clear">
                         <i className="fas fa-times"></i>
@@ -364,7 +453,7 @@ const URLCleaner = () => {
             {error && <p className="url-error">{error}</p>}
 
             {/* Output */}
-            {cleanedURL && !error && (
+            {!batchMode && cleanedURL && !error && (
                 <>
                     {wasRedirect ? (
                         <div className="url-status url-status--redirect">
@@ -398,6 +487,53 @@ const URLCleaner = () => {
                         </div>
                     )}
                 </>
+            )}
+
+            {batchMode && batchResults && batchResults.length > 0 && (
+                <div className="batch-results">
+                    <div className="batch-actions">
+                        <div className="url-status url-status--clean">
+                            <i className="fas fa-list"></i> {batchResults.length} URL{batchResults.length > 1 ? 's' : ''}
+                        </div>
+                        <button className="url-copy-btn" onClick={copyBatchAll}>
+                            {batchCopySuccess ? <><i className="fas fa-check"></i> Copied!</> : <><i className="fas fa-copy"></i> Copy All</>}
+                        </button>
+                    </div>
+
+                    <div className="batch-list">
+                        {batchResults.map((r, idx) => (
+                            <div key={`${r.input}-${idx}`} className="batch-item">
+                                <div className="url-output-wrapper">
+                                    <p className="url-output">{r.clean || r.input}</p>
+                                    <button className="url-copy-btn" onClick={async () => {
+                                        try {
+                                            await navigator.clipboard.writeText(r.clean || r.input);
+                                            setBatchCopySuccess(true);
+                                            setTimeout(() => setBatchCopySuccess(false), 1200);
+                                        } catch {
+                                            const ta = document.createElement('textarea');
+                                            ta.value = r.clean || r.input;
+                                            document.body.appendChild(ta);
+                                            ta.select();
+                                            document.execCommand('copy');
+                                            document.body.removeChild(ta);
+                                            setBatchCopySuccess(true);
+                                            setTimeout(() => setBatchCopySuccess(false), 1200);
+                                        }
+                                    }}>
+                                        <i className="fas fa-copy"></i> Copy
+                                    </button>
+                                </div>
+                                {r.error && <div className="url-error">{r.error}</div>}
+                                {r.removed && r.removed.length > 0 && (
+                                    <div className="url-badges">
+                                        {r.removed.map(p => <span key={p} className="url-badge">{p}</span>)}
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
             )}
         </div>
     );
