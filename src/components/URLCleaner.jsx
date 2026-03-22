@@ -74,6 +74,10 @@ const KNOWN_TRACKERS = new Set([
     // Generic click / affiliate
     'click_id', 'clickid', 'affiliate_id', 'aff_id', 'affid',
     'campaign_id', 'ad_id', 'adid',
+    // Snapchat Ads
+    'ScCid',
+    // Generic ad/creative IDs (common across ad platforms)
+    'adaccount_id', 'creo_id', 'creative_id',
 ]);
 
 // ─── Layer 2: Safelist ────────────────────────────────────────────────────────
@@ -126,6 +130,11 @@ const TRACKER_NAME_PATTERNS = [
     /^ad_/i,
     /adid$/i,
     /terminal[-_]?id/i,
+    /^ad(?:account)?[-_]/i,   // ad_id, adaccount_id, adset_*
+    /^adset/i,                // adset_name, adset_id
+    /creo[-_]?id/i,           // creo_id (creative ID)
+    /^sc_?cid$/i,             // ScCid (Snapchat click ID)
+    /cid$/i,                  // ScCid, mc_cid, etc. — ends in 'cid'
 ];
 
 /** Only flag value as suspicious hash when the param NAME also looks like tracking.
@@ -136,9 +145,12 @@ function looksLikeTrackingName(key) {
 
 /** Does the VALUE look like a random tracking hash? */
 function looksLikeTrackingValue(value) {
-    if (!value || value.length < 20) return false;
-    if (/^[0-9a-f]{20,}$/i.test(value)) return true;                        // hex hash
-    if (/^[A-Za-z0-9+/=]{24,}$/.test(value) && !/^\d+$/.test(value)) return true; // base64
+    if (!value || value.length < 8) return false;
+    // UUID format (e.g. Snapchat ScCid, adaccount_id, utm_campaign when it's a UUID)
+    if (/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value)) return true;
+    if (value.length < 20) return false;
+    if (/^[0-9a-f]{20,}$/i.test(value)) return true;
+    if (/^[A-Za-z0-9+/=]{24,}$/.test(value) && !/^\d+$/.test(value)) return true;
     if (/^[A-Za-z0-9_-]{24,}$/.test(value) && /[A-Z]/.test(value) && /[0-9]/.test(value)) return true;
     return false;
 }
