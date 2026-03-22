@@ -3,9 +3,16 @@ import { Link } from 'react-router-dom';
 import PasswordGenerator from '../components/PasswordGenerator';
 import FuelCalculator from '../components/FuelCalculator';
 import URLCleaner from '../components/URLCleaner';
+import FuelEVTracker from '../components/FuelEVTracker';
 import '../styles/IOWebTools.css';
 
 const toolsList = [
+    {
+        id: 'fe-tracker',
+        title: 'UK Fuel & EV App',
+        icon: 'fas fa-map-marked-alt',
+        component: FuelEVTracker
+    },
     {
         id: 'url-cleaner',
         title: 'URL Cleaner',
@@ -45,7 +52,7 @@ const IOWebTools = () => {
                 {/* Sidebar Navigation */}
                 <aside className="tools-sidebar">
                     {toolsList.map(tool => (
-                        <button 
+                        <button
                             key={tool.id}
                             className={`tool-nav-btn ${activeToolId === tool.id ? 'active' : ''}`}
                             onClick={() => setActiveToolId(tool.id)}

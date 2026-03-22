@@ -82,7 +82,8 @@
 /* Main Content Area */
 .tool-content-area {
     flex: 1;
-    min-width: 0; /* Prevents flex items from overflowing */
+    min-width: 0;
+    /* Prevents flex items from overflowing */
 }
 
 .active-tool-container {
@@ -127,6 +128,7 @@
         opacity: 0;
         transform: translateY(10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -170,7 +172,8 @@
         flex: auto;
         width: 100%;
         flex-direction: row;
-        flex-wrap: wrap; /* Replaces the slider with a wrapped layout */
+        flex-wrap: wrap;
+        /* Replaces the slider with a wrapped layout */
         justify-content: center;
         gap: 10px;
         padding-bottom: 5px;
@@ -180,14 +183,16 @@
         flex: 1 1 calc(33.333% - 10px);
         padding: 12px 10px;
         font-size: 0.95rem;
-        flex-direction: column; /* Stack icon and text */
+        flex-direction: column;
+        /* Stack icon and text */
         justify-content: center;
         text-align: center;
         gap: 8px;
     }
 
     .active-tool-container {
-        padding: 24px 15px; /* Adjusted padding to give the content more room */
+        padding: 24px 15px;
+        /* Adjusted padding to give the content more room */
         width: 100%;
         box-sizing: border-box;
     }
@@ -199,7 +204,8 @@
 
 @media (max-width: 600px) {
     .tool-nav-btn {
-        flex: 1 1 calc(50% - 10px); /* 2 columns on smaller screens */
+        flex: 1 1 calc(50% - 10px);
+        /* 2 columns on smaller screens */
         padding: 10px 8px;
         font-size: 0.9rem;
     }
@@ -209,8 +215,9 @@
     .io-web-tools-container {
         padding: 15px 10px;
     }
-    
+
     .active-tool-container {
-        padding: 20px 10px; /* Minimal padding on very small screens to maximize inner space */
+        padding: 20px 10px;
+        /* Minimal padding on very small screens to maximize inner space */
     }
 }
