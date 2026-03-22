@@ -16,47 +16,127 @@
     font-size: 1.1rem;
 }
 
-/* Tool containers */
-.tool-container {
-    background-color: var(--quaternary-color);
-    border: 2px solid var(--shadow-color);
-    border-radius: 12px;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Master-Detail Layout */
+.tools-layout {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+/* Sidebar Navigation */
+.tools-sidebar {
+    flex: 0 0 280px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    gap: 12px;
+}
+
+.tool-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 16px 20px;
+    background-color: var(--quaternary-color);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    outline: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.tool-nav-btn i {
+    font-size: 1.25rem;
+    color: var(--tertiary-color);
+    transition: color 0.3s ease;
+    width: 24px;
+    text-align: center;
+}
+
+.tool-nav-btn:hover {
+    background-color: var(--tertiary-color);
+    color: var(--background-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.tool-nav-btn:hover i {
+    color: var(--background-color);
+}
+
+.tool-nav-btn.active {
+    border-color: var(--tertiary-color);
+    background-color: var(--quaternary-color);
+    color: var(--tertiary-color);
+    box-shadow: 0 0 15px rgba(var(--tertiary-rgb, 128, 128, 128), 0.2);
+}
+
+.tool-nav-btn.active i {
+    color: var(--tertiary-color);
+}
+
+/* Main Content Area */
+.tool-content-area {
+    flex: 1;
+    min-width: 0; /* Prevents flex items from overflowing */
+}
+
+.active-tool-container {
+    background-color: var(--quaternary-color);
+    border: 2px solid var(--shadow-color);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
     align-items: center;
     transition: filter 1s ease;
 }
 
-.tool-container:hover {
+.active-tool-container:hover {
     filter: drop-shadow(0 0 0.5em var(--tertiary-color));
 }
 
-/* .dark-theme .tool-container {
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05);
-} */
-
 .tool-title {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     color: var(--tertiary-color);
     font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
 }
 
-/* Grid Layout — auto-fill scales to any number of tools */
-.tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 32px;
+.tool-title i {
+    font-size: 1.6rem;
+    opacity: 0.8;
+}
+
+/* Animations */
+.fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Ensure calculator container gets proper width */
 .calculator-container {
     width: 100% !important;
     max-width: 320px !important;
-
 }
 
 .back-home-link {
@@ -79,21 +159,58 @@
     color: var(--tertiary-color);
 }
 
-@media (max-width: 768px) {
+/* Responsive Layout */
+@media (max-width: 850px) {
+    .tools-layout {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .tools-sidebar {
+        flex: auto;
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap; /* Replaces the slider with a wrapped layout */
+        justify-content: center;
+        gap: 10px;
+        padding-bottom: 5px;
+    }
+
+    .tool-nav-btn {
+        flex: 1 1 calc(33.333% - 10px);
+        padding: 12px 10px;
+        font-size: 0.95rem;
+        flex-direction: column; /* Stack icon and text */
+        justify-content: center;
+        text-align: center;
+        gap: 8px;
+    }
+
+    .active-tool-container {
+        padding: 24px 15px; /* Adjusted padding to give the content more room */
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .tool-content-area {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .tool-nav-btn {
+        flex: 1 1 calc(50% - 10px); /* 2 columns on smaller screens */
+        padding: 10px 8px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 500px) {
     .io-web-tools-container {
-        padding: 20px 10px;
+        padding: 15px 10px;
     }
-
-    .tool-container {
-        padding: 5px;
-    }
-
-    .tools-grid {
-        grid-template-columns: 1fr;
-    }
-
-    /* URL Cleaner is most-used on mobile — float it to the top */
-    .tool-container:nth-child(3) {
-        order: -1;
+    
+    .active-tool-container {
+        padding: 20px 10px; /* Minimal padding on very small screens to maximize inner space */
     }
 }
