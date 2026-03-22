@@ -7,12 +7,7 @@ import FuelEVTracker from '../components/FuelEVTracker';
 import '../styles/IOWebTools.css';
 
 const toolsList = [
-    {
-        id: 'fe-tracker',
-        title: 'UK Fuel & EV App',
-        icon: 'fas fa-map-marked-alt',
-        component: FuelEVTracker
-    },
+
     {
         id: 'url-cleaner',
         title: 'URL Cleaner',
@@ -30,7 +25,13 @@ const toolsList = [
         title: 'Fuel Calculator',
         icon: 'fas fa-gas-pump',
         component: FuelCalculator
-    }
+    },
+    {
+        id: 'fe-tracker',
+        title: 'Fuel & Charger finder',
+        icon: 'fas fa-map-marked-alt',
+        component: FuelEVTracker
+    },
 ];
 
 const IOWebTools = () => {
