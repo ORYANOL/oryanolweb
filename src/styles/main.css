@@ -100,6 +100,57 @@ h4 {
     justify-content: center;
 }
 
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 0 16px;
+}
+
+.header-nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--tertiary-color);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border: 2px solid var(--tertiary-color);
+    border-radius: 999px;
+    transition: all 0.2s ease;
+}
+
+.header-nav-link:hover {
+    background-color: var(--tertiary-color);
+    color: var(--quaternary-color);
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+.header-nav-link i {
+    font-size: 14px;
+}
+
+@media (max-width: 560px) {
+    .header-nav {
+        gap: 8px;
+        padding: 0 8px;
+    }
+
+    .header-nav-link span {
+        display: none;
+    }
+
+    .header-nav-link {
+        padding: 8px 10px;
+    }
+
+    .header-nav-link i {
+        font-size: 16px;
+    }
+}
+
 .dark-theme .theme-toggle-icon:hover {
     text-shadow: 0 0 10px #ffcc00, 0 0 15px #ffcc00;
     animation: logo-spin 20s linear infinite;

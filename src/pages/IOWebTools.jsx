@@ -4,6 +4,7 @@ import PasswordGenerator from '../components/PasswordGenerator';
 import FuelCalculator from '../components/FuelCalculator';
 import URLCleaner from '../components/URLCleaner';
 import FuelEVTracker from '../components/FuelEVTracker';
+import ChargeCheck from '../components/ChargeCheck';
 import '../styles/IOWebTools.css';
 
 const toolsList = [
@@ -31,6 +32,12 @@ const toolsList = [
         title: 'Fuel & Charger finder',
         icon: 'fas fa-map-marked-alt',
         component: FuelEVTracker
+    },
+    {
+        id: 'chargecheck',
+        title: 'ChargeCheck',
+        icon: 'fas fa-bolt',
+        component: ChargeCheck
     },
 ];
 
