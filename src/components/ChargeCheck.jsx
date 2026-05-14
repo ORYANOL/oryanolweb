@@ -42,7 +42,7 @@ const calc = ({ battery, startSOC, targetSOC, rate, fee, efficiency, effUnit }) 
     const energyCost = energy * rate;
     const total = energyCost + fee;
     const truePrice = energy > 0 ? total / energy : NaN;
-    
+
     let distPerKwh = 0;
     if (effUnit === 'mi/kWh' || effUnit === 'km/kWh') {
         distPerKwh = efficiency;
@@ -74,7 +74,7 @@ const ChargerPanel = ({
             : 'cc-panel-border';
 
     return (
-        <div className={`rounded-2xl border-2 ${borderClass} cc-panel-bg p-5 flex flex-col gap-4 transition-all duration-300`}>
+        <div className={`rounded-2xl border-2 ${borderClass} cc-panel-bg p-3 sm:p-5 flex flex-col gap-4 transition-all duration-300`}>
             {/* Header */}
             <div className="flex items-center justify-between">
                 <span className="text-sm font-semibold tracking-wide text-indigo-300 uppercase">{label}</span>
@@ -365,7 +365,7 @@ const ChargeCheck = () => {
             </section>
 
             {/* ─── SOC + Efficiency sliders ─── */}
-            <section className="flex flex-col gap-5 rounded-2xl border cc-panel-border cc-panel-bg p-5">
+            <section className="flex flex-col gap-5 rounded-2xl border cc-panel-border cc-panel-bg p-3 sm:p-5">
                 {/* Start SOC */}
                 <div className="flex flex-col gap-1.5">
                     <div className="flex items-baseline justify-between">
