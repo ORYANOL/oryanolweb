@@ -1,0 +1,183 @@
+@import "tailwindcss";
+
+/* Apple-style system font stack */
+.cc-font {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+        "Inter", system-ui, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "ss01", "cv11";
+}
+
+/* ─── Slider (iOS style) ─── */
+.cc-range {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    height: 4px;
+}
+
+.cc-range::-webkit-slider-runnable-track {
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(to right, #6366f1, #8b5cf6);
+}
+
+.cc-range::-moz-range-track {
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(to right, #6366f1, #8b5cf6);
+}
+
+.cc-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 0 0 0.5px rgba(0, 0, 0, 0.04);
+    margin-top: -9px;
+    transition: transform 0.15s ease;
+}
+
+.cc-range::-webkit-slider-thumb:active {
+    transform: scale(1.12);
+}
+
+.cc-range::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* ─── Number inputs — strip spinners for a cleaner look ─── */
+.cc-num-input::-webkit-inner-spin-button,
+.cc-num-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.cc-num-input {
+    -moz-appearance: textfield;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ─── Text Inputs (Matches Site Theme) ─── */
+.cc-input {
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 2px solid transparent !important;
+    color: var(--secondary-color) !important;
+    transition: all 0.3s ease;
+}
+
+.dark-theme .cc-input {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.cc-input:focus {
+    border-color: var(--tertiary-color) !important;
+    box-shadow: none !important;
+    outline: none;
+}
+
+.cc-input::placeholder {
+    color: var(--secondary-color);
+    opacity: 0.5;
+}
+
+/* ─── Dynamic Panels ─── */
+.cc-panel-bg {
+    background-color: rgba(0, 0, 0, 0.03) !important;
+}
+
+.dark-theme .cc-panel-bg {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+.cc-panel-border {
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.dark-theme .cc-panel-border {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ─── iOS-style toggle switch ─── */
+.cc-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 26px;
+    flex-shrink: 0;
+}
+
+.cc-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.cc-switch-slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background-color: rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    transition: background-color 0.25s ease;
+}
+
+.cc-switch-slider::before {
+    content: "";
+    position: absolute;
+    height: 22px;
+    width: 22px;
+    left: 2px;
+    top: 2px;
+    background: #ffffff;
+    border-radius: 50%;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+}
+
+.cc-switch input:checked + .cc-switch-slider {
+    background: linear-gradient(to right, #6366f1, #8b5cf6);
+}
+
+.cc-switch input:checked + .cc-switch-slider::before {
+    transform: translateX(18px);
+}
+
+/* ─── Fade-up animation ─── */
+@keyframes ccFadeUp {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.cc-fade-up {
+    animation: ccFadeUp 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ─── Dropdown scrollbar ─── */
+.cc-dropdown::-webkit-scrollbar {
+    width: 6px;
+}
+
+.cc-dropdown::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.cc-dropdown::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.3);
+    border-radius: 999px;
+}
+
+.cc-dropdown::-webkit-scrollbar-thumb:hover {
+    background: rgba(148, 163, 184, 0.5);
+}

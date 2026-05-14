@@ -44,11 +44,7 @@ const SocialLinks = () => {
           <i className="fa-solid fa-gear" aria-label="Web Tools"></i>
         </Link>
       </div>
-      <div className="col">
-        <Link to="/chargecheck">
-          <i className="fa-solid fa-bolt" aria-label="ChargeCheck"></i>
-        </Link>
-      </div>
+
     </div>
   );
 };

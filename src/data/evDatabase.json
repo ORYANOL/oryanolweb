@@ -1,0 +1,667 @@
+[
+  {
+    "make": "Alfa Romeo",
+    "model": "Junior Elettrica",
+    "kwh": 51
+  },
+  {
+    "make": "Audi",
+    "model": "e-tron GT",
+    "kwh": 83.7
+  },
+  {
+    "make": "Audi",
+    "model": "Q4 e-tron 40",
+    "kwh": 77
+  },
+  {
+    "make": "Audi",
+    "model": "Q4 e-tron 50",
+    "kwh": 77
+  },
+  {
+    "make": "Audi",
+    "model": "Q6 e-tron",
+    "kwh": 94.9
+  },
+  {
+    "make": "Audi",
+    "model": "Q8 e-tron 50",
+    "kwh": 89
+  },
+  {
+    "make": "Audi",
+    "model": "Q8 e-tron 55",
+    "kwh": 106
+  },
+  {
+    "make": "BMW",
+    "model": "i3",
+    "kwh": 37.9
+  },
+  {
+    "make": "BMW",
+    "model": "i4 eDrive40",
+    "kwh": 81.3
+  },
+  {
+    "make": "BMW",
+    "model": "i4 M50",
+    "kwh": 81.3
+  },
+  {
+    "make": "BMW",
+    "model": "i5",
+    "kwh": 81.2
+  },
+  {
+    "make": "BMW",
+    "model": "i7",
+    "kwh": 101.7
+  },
+  {
+    "make": "BMW",
+    "model": "iX xDrive40",
+    "kwh": 71
+  },
+  {
+    "make": "BMW",
+    "model": "iX xDrive50",
+    "kwh": 105.2
+  },
+  {
+    "make": "BMW",
+    "model": "iX3",
+    "kwh": 74
+  },
+  {
+    "make": "BYD",
+    "model": "Atto 3",
+    "kwh": 60.5
+  },
+  {
+    "make": "BYD",
+    "model": "Dolphin Active",
+    "kwh": 44.9
+  },
+  {
+    "make": "BYD",
+    "model": "Dolphin Comfort",
+    "kwh": 60.4
+  },
+  {
+    "make": "BYD",
+    "model": "Seal Design",
+    "kwh": 82.5
+  },
+  {
+    "make": "BYD",
+    "model": "Seal U",
+    "kwh": 71.8
+  },
+  {
+    "make": "Citroen",
+    "model": "e-Berlingo",
+    "kwh": 50
+  },
+  {
+    "make": "Citroen",
+    "model": "e-C3",
+    "kwh": 44
+  },
+  {
+    "make": "Citroen",
+    "model": "e-C4",
+    "kwh": 50
+  },
+  {
+    "make": "Cupra",
+    "model": "Born 58",
+    "kwh": 58
+  },
+  {
+    "make": "Cupra",
+    "model": "Born 77",
+    "kwh": 77
+  },
+  {
+    "make": "Cupra",
+    "model": "Tavascan",
+    "kwh": 77
+  },
+  {
+    "make": "DS",
+    "model": "DS 3 E-Tense",
+    "kwh": 50
+  },
+  {
+    "make": "DS",
+    "model": "DS 4 E-Tense",
+    "kwh": 54
+  },
+  {
+    "make": "Fiat",
+    "model": "500e",
+    "kwh": 37.3
+  },
+  {
+    "make": "Fiat",
+    "model": "600e",
+    "kwh": 51
+  },
+  {
+    "make": "Ford",
+    "model": "Explorer EV",
+    "kwh": 77
+  },
+  {
+    "make": "Ford",
+    "model": "Mustang Mach-E ER",
+    "kwh": 91
+  },
+  {
+    "make": "Ford",
+    "model": "Mustang Mach-E SR",
+    "kwh": 70
+  },
+  {
+    "make": "Ford",
+    "model": "Puma Gen-E",
+    "kwh": 43
+  },
+  {
+    "make": "Genesis",
+    "model": "Electrified G80",
+    "kwh": 82.5
+  },
+  {
+    "make": "Genesis",
+    "model": "Electrified GV70",
+    "kwh": 77.4
+  },
+  {
+    "make": "Genesis",
+    "model": "GV60",
+    "kwh": 77.4
+  },
+  {
+    "make": "Honda",
+    "model": "e:Ny1",
+    "kwh": 61.9
+  },
+  {
+    "make": "Hyundai",
+    "model": "Ioniq 5 58",
+    "kwh": 58
+  },
+  {
+    "make": "Hyundai",
+    "model": "Ioniq 5 77",
+    "kwh": 77.4
+  },
+  {
+    "make": "Hyundai",
+    "model": "Ioniq 6",
+    "kwh": 77.4
+  },
+  {
+    "make": "Hyundai",
+    "model": "Kona Electric 39",
+    "kwh": 39
+  },
+  {
+    "make": "Hyundai",
+    "model": "Kona Electric 64",
+    "kwh": 64
+  },
+  {
+    "make": "Jaguar",
+    "model": "I-Pace",
+    "kwh": 84.7
+  },
+  {
+    "make": "Jeep",
+    "model": "Avenger EV",
+    "kwh": 51
+  },
+  {
+    "make": "Kia",
+    "model": "EV6 Long Range",
+    "kwh": 77.4
+  },
+  {
+    "make": "Kia",
+    "model": "EV6 Standard",
+    "kwh": 74
+  },
+  {
+    "make": "Kia",
+    "model": "EV9",
+    "kwh": 99.8
+  },
+  {
+    "make": "Kia",
+    "model": "Niro EV",
+    "kwh": 64.8
+  },
+  {
+    "make": "Kia",
+    "model": "Soul EV",
+    "kwh": 64
+  },
+  {
+    "make": "Lexus",
+    "model": "RZ 450e",
+    "kwh": 71.4
+  },
+  {
+    "make": "Lexus",
+    "model": "UX 300e",
+    "kwh": 72.8
+  },
+  {
+    "make": "Lotus",
+    "model": "Eletre",
+    "kwh": 109
+  },
+  {
+    "make": "Lotus",
+    "model": "Emeya",
+    "kwh": 98.9
+  },
+  {
+    "make": "Maxus",
+    "model": "MIFA 9",
+    "kwh": 90
+  },
+  {
+    "make": "Mercedes",
+    "model": "EQA 250",
+    "kwh": 66.5
+  },
+  {
+    "make": "Mercedes",
+    "model": "EQA 300/350",
+    "kwh": 66.5
+  },
+  {
+    "make": "Mercedes",
+    "model": "EQB",
+    "kwh": 66.5
+  },
+  {
+    "make": "Mercedes",
+    "model": "EQC 400",
+    "kwh": 80
+  },
+  {
+    "make": "Mercedes",
+    "model": "EQE",
+    "kwh": 90
+  },
+  {
+    "make": "Mercedes",
+    "model": "EQS 450+",
+    "kwh": 107.8
+  },
+  {
+    "make": "Mercedes",
+    "model": "EQS SUV",
+    "kwh": 107.8
+  },
+  {
+    "make": "MG",
+    "model": "Cyberster",
+    "kwh": 77
+  },
+  {
+    "make": "MG",
+    "model": "MG4 Extended Range 77",
+    "kwh": 74.4
+  },
+  {
+    "make": "MG",
+    "model": "MG4 Long Range 64",
+    "kwh": 61.7
+  },
+  {
+    "make": "MG",
+    "model": "MG4 SE 51",
+    "kwh": 50.8
+  },
+  {
+    "make": "MG",
+    "model": "MG5 EV",
+    "kwh": 57.4
+  },
+  {
+    "make": "MG",
+    "model": "ZS EV Long Range",
+    "kwh": 70
+  },
+  {
+    "make": "MG",
+    "model": "ZS EV Standard",
+    "kwh": 51
+  },
+  {
+    "make": "MINI",
+    "model": "Cooper E",
+    "kwh": 36.6
+  },
+  {
+    "make": "MINI",
+    "model": "Cooper SE",
+    "kwh": 49.2
+  },
+  {
+    "make": "MINI",
+    "model": "Countryman E",
+    "kwh": 64.6
+  },
+  {
+    "make": "MINI",
+    "model": "Countryman SE ALL4",
+    "kwh": 64.6
+  },
+  {
+    "make": "MINI",
+    "model": "Electric (F56)",
+    "kwh": 28.9
+  },
+  {
+    "make": "Nissan",
+    "model": "Ariya 63",
+    "kwh": 63
+  },
+  {
+    "make": "Nissan",
+    "model": "Ariya 87",
+    "kwh": 87
+  },
+  {
+    "make": "Nissan",
+    "model": "Leaf 40",
+    "kwh": 39
+  },
+  {
+    "make": "Nissan",
+    "model": "Leaf e+ 62",
+    "kwh": 56
+  },
+  {
+    "make": "Ora",
+    "model": "03 / Funky Cat 45",
+    "kwh": 45.4
+  },
+  {
+    "make": "Ora",
+    "model": "03 / Funky Cat 63",
+    "kwh": 63
+  },
+  {
+    "make": "Peugeot",
+    "model": "e-2008 50",
+    "kwh": 46.3
+  },
+  {
+    "make": "Peugeot",
+    "model": "e-2008 54",
+    "kwh": 54
+  },
+  {
+    "make": "Peugeot",
+    "model": "e-208 50",
+    "kwh": 46.3
+  },
+  {
+    "make": "Peugeot",
+    "model": "e-208 51",
+    "kwh": 51
+  },
+  {
+    "make": "Peugeot",
+    "model": "e-3008",
+    "kwh": 73
+  },
+  {
+    "make": "Peugeot",
+    "model": "e-308",
+    "kwh": 54
+  },
+  {
+    "make": "Polestar",
+    "model": "2 Long Range",
+    "kwh": 78
+  },
+  {
+    "make": "Polestar",
+    "model": "2 Standard",
+    "kwh": 67
+  },
+  {
+    "make": "Polestar",
+    "model": "3",
+    "kwh": 107
+  },
+  {
+    "make": "Polestar",
+    "model": "4",
+    "kwh": 94
+  },
+  {
+    "make": "Porsche",
+    "model": "Macan Electric",
+    "kwh": 95
+  },
+  {
+    "make": "Porsche",
+    "model": "Taycan",
+    "kwh": 79.2
+  },
+  {
+    "make": "Porsche",
+    "model": "Taycan Performance Plus",
+    "kwh": 93.4
+  },
+  {
+    "make": "Renault",
+    "model": "5 E-Tech 40",
+    "kwh": 40
+  },
+  {
+    "make": "Renault",
+    "model": "5 E-Tech 52",
+    "kwh": 52
+  },
+  {
+    "make": "Renault",
+    "model": "Megane E-Tech EV40",
+    "kwh": 40
+  },
+  {
+    "make": "Renault",
+    "model": "Megane E-Tech EV60",
+    "kwh": 60
+  },
+  {
+    "make": "Renault",
+    "model": "Scenic E-Tech 60",
+    "kwh": 60
+  },
+  {
+    "make": "Renault",
+    "model": "Scenic E-Tech 87",
+    "kwh": 87
+  },
+  {
+    "make": "Renault",
+    "model": "Zoe ZE50",
+    "kwh": 52
+  },
+  {
+    "make": "Skoda",
+    "model": "Elroq 50",
+    "kwh": 52
+  },
+  {
+    "make": "Skoda",
+    "model": "Elroq 85",
+    "kwh": 77
+  },
+  {
+    "make": "Skoda",
+    "model": "Enyaq 60",
+    "kwh": 58
+  },
+  {
+    "make": "Skoda",
+    "model": "Enyaq 85",
+    "kwh": 77
+  },
+  {
+    "make": "Smart",
+    "model": "#1",
+    "kwh": 62
+  },
+  {
+    "make": "Smart",
+    "model": "#3",
+    "kwh": 62
+  },
+  {
+    "make": "Subaru",
+    "model": "Solterra",
+    "kwh": 71.4
+  },
+  {
+    "make": "Tesla",
+    "model": "Model 3 Long Range",
+    "kwh": 75
+  },
+  {
+    "make": "Tesla",
+    "model": "Model 3 Performance",
+    "kwh": 75
+  },
+  {
+    "make": "Tesla",
+    "model": "Model 3 Standard Range",
+    "kwh": 57.5
+  },
+  {
+    "make": "Tesla",
+    "model": "Model S",
+    "kwh": 95
+  },
+  {
+    "make": "Tesla",
+    "model": "Model X",
+    "kwh": 95
+  },
+  {
+    "make": "Tesla",
+    "model": "Model Y Long Range",
+    "kwh": 75
+  },
+  {
+    "make": "Tesla",
+    "model": "Model Y Performance",
+    "kwh": 75
+  },
+  {
+    "make": "Tesla",
+    "model": "Model Y Standard Range",
+    "kwh": 60
+  },
+  {
+    "make": "Toyota",
+    "model": "bZ4X",
+    "kwh": 71.4
+  },
+  {
+    "make": "Vauxhall",
+    "model": "Astra Electric",
+    "kwh": 54
+  },
+  {
+    "make": "Vauxhall",
+    "model": "Corsa Electric 50",
+    "kwh": 46.3
+  },
+  {
+    "make": "Vauxhall",
+    "model": "Corsa Electric 51",
+    "kwh": 51
+  },
+  {
+    "make": "Vauxhall",
+    "model": "Grandland Electric",
+    "kwh": 73
+  },
+  {
+    "make": "Vauxhall",
+    "model": "Mokka Electric",
+    "kwh": 51
+  },
+  {
+    "make": "Volvo",
+    "model": "EC40",
+    "kwh": 78
+  },
+  {
+    "make": "Volvo",
+    "model": "EX30 Single 51",
+    "kwh": 49
+  },
+  {
+    "make": "Volvo",
+    "model": "EX30 Twin 69",
+    "kwh": 64
+  },
+  {
+    "make": "Volvo",
+    "model": "EX40",
+    "kwh": 78
+  },
+  {
+    "make": "Volvo",
+    "model": "EX90",
+    "kwh": 107
+  },
+  {
+    "make": "VW",
+    "model": "ID.3 Pro",
+    "kwh": 58
+  },
+  {
+    "make": "VW",
+    "model": "ID.3 Pro S",
+    "kwh": 77
+  },
+  {
+    "make": "VW",
+    "model": "ID.3 Pure",
+    "kwh": 45
+  },
+  {
+    "make": "VW",
+    "model": "ID.4 Pro",
+    "kwh": 77
+  },
+  {
+    "make": "VW",
+    "model": "ID.5 Pro",
+    "kwh": 77
+  },
+  {
+    "make": "VW",
+    "model": "ID.7",
+    "kwh": 77
+  },
+  {
+    "make": "VW",
+    "model": "ID.Buzz",
+    "kwh": 77
+  }
+]

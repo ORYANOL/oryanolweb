@@ -32,7 +32,7 @@ async function resolvePostcode(postcode) {
 // ─── DESNZ fuel price feed ───────────────────────────────────────────────────
 async function fetchFuelStations(lat, lng, radiusKm = 10) {
     const res = await fetch(
-        'https://young-waterfall-11e5.oryanol46.workers.dev',
+        'https://api.data.gov.uk/v1/access?resource_id=e23f9491-6c0d-4bfe-8890-67f3c39c6a4d&limit=5000',
         { signal: AbortSignal.timeout(10000) }
     );
     if (!res.ok) throw new Error('Fuel price data unavailable. Please try again later.');
