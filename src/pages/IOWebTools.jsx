@@ -17,8 +17,8 @@ const toolsList = [
         component: URLCleaner
     },
     {
-        id: 'barcode-scanner',
-        title: 'Barcode Scanner',
+        id: 'barcode-food-scanner',
+        title: 'Barcode & Food Scanner',
         icon: 'fas fa-barcode',
         component: BarcodeScanner
     },

@@ -11,22 +11,6 @@ import '../styles/BarcodeScanner.css';
 
 const SAMPLE_CATEGORIES = [
   {
-    category: '📱 Tech & Electronics',
-    items: [
-      { label: 'Apple iPhone 13 Pro', code: '0194252042458' },
-      { label: 'Google Pixel 8 Pro', code: '0842776100000' },
-      { label: 'Nintendo Switch OLED', code: '0045496453435' },
-      { label: 'Sony PS5 Controller', code: '0711719541028' }
-    ]
-  },
-  {
-    category: '🧱 Toys & Bricks',
-    items: [
-      { label: 'LEGO Star Wars Set', code: '5702017156553' },
-      { label: 'LEGO Flower Bouquet', code: '5702016913980' }
-    ]
-  },
-  {
     category: '📚 Books (ISBN)',
     items: [
       { label: 'Roald Dahl Book', code: '9780140328721' }
@@ -43,7 +27,23 @@ const SAMPLE_CATEGORIES = [
     ]
   },
   {
-    category: '⚠️ Validation Test',
+    category: '📱 Tech & Electronics',
+    items: [
+      { label: 'Apple iPhone 13 Pro', code: '0194252042458' },
+      { label: 'Google Pixel 8 Pro', code: '0842776100000' },
+      { label: 'Nintendo Switch OLED', code: '0045496453435' },
+      { label: 'Sony PS5 Controller', code: '0711719541028' }
+    ]
+  },
+  {
+    category: '🧱 Toys & Bricks',
+    items: [
+      { label: 'LEGO Star Wars Set', code: '5702017156553' },
+      { label: 'LEGO Flower Bouquet', code: '5702016913980' }
+    ]
+  },
+  {
+    category: '⚠️ Validation Tests',
     items: [
       { label: 'Invalid Check Digit', code: '3017620422004' }
     ]
