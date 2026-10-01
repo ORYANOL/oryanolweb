@@ -5,6 +5,7 @@ import FuelCalculator from '../components/FuelCalculator';
 import URLCleaner from '../components/URLCleaner';
 import FuelEVTracker from '../components/FuelEVTracker';
 import ChargeCheck from '../components/ChargeCheck';
+import BarcodeScanner from '../components/BarcodeScanner';
 import '../styles/IOWebTools.css';
 
 const toolsList = [
@@ -14,6 +15,12 @@ const toolsList = [
         title: 'URL Cleaner',
         icon: 'fas fa-link',
         component: URLCleaner
+    },
+    {
+        id: 'barcode-scanner',
+        title: 'Barcode Scanner',
+        icon: 'fas fa-barcode',
+        component: BarcodeScanner
     },
     {
         id: 'password-generator',

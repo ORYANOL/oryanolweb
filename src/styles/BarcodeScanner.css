@@ -1,0 +1,1373 @@
+/* Barcode Scanner Component Styles */
+.barcode-scanner-root {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-family: inherit;
+    color: var(--secondary-color);
+}
+
+/* Header & Intro */
+.barcode-intro {
+    text-align: center;
+    margin-bottom: 2px;
+}
+
+.barcode-intro p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--secondary-color);
+    opacity: 0.85;
+    line-height: 1.4;
+}
+
+/* Action Toolbar (Above Stage) */
+.barcode-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 8px 12px;
+    background: rgba(128, 128, 128, 0.08);
+    border: 1px solid rgba(128, 128, 128, 0.18);
+    border-radius: 12px;
+    position: relative;
+}
+
+.toolbar-left,
+.toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.toolbar-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.format-pills {
+    display: inline-flex;
+    background: rgba(128, 128, 128, 0.12);
+    border-radius: 9px;
+    padding: 3px;
+    gap: 3px;
+}
+
+.format-pill-btn {
+    border: none;
+    background: transparent;
+    color: var(--secondary-color);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    opacity: 0.75;
+}
+
+.format-pill-btn:hover {
+    opacity: 1;
+    color: var(--tertiary-color);
+}
+
+.format-pill-btn.active {
+    background: var(--body-background-color);
+    color: var(--tertiary-color);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    opacity: 1;
+}
+
+.toolbar-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 8px 14px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.toolbar-btn.primary-btn {
+    background-color: var(--tertiary-color);
+    color: #fff;
+    border-color: var(--tertiary-color);
+}
+
+.toolbar-btn.primary-btn:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+}
+
+.toolbar-btn.secondary-btn {
+    background: transparent;
+    border-color: rgba(128, 128, 128, 0.3);
+    color: var(--secondary-color);
+}
+
+.toolbar-btn.secondary-btn:hover {
+    border-color: var(--tertiary-color);
+    color: var(--tertiary-color);
+}
+
+.toolbar-btn.samples-btn.active {
+    background: var(--tertiary-color);
+    color: #fff;
+    border-color: var(--tertiary-color);
+}
+
+.toolbar-btn.clear-btn {
+    background: rgba(220, 38, 38, 0.1);
+    border-color: rgba(220, 38, 38, 0.25);
+    color: #dc2626;
+}
+
+.toolbar-btn.clear-btn:hover {
+    background: #dc2626;
+    color: #fff;
+}
+
+.status-indicator {
+    font-size: 0.82rem;
+    font-weight: 600;
+    opacity: 0.75;
+    padding: 0 4px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Collapsible Samples Popover (Hidden until clicked)
+   ───────────────────────────────────────────────────────── */
+.samples-popover {
+    width: 100%;
+    background: var(--quaternary-color);
+    border: 2px solid var(--tertiary-color);
+    border-radius: 14px;
+    padding: 14px 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.25s ease-out;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.samples-popover-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+    padding-bottom: 8px;
+}
+
+.samples-popover-title {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--tertiary-color);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.samples-close-btn {
+    background: transparent;
+    border: none;
+    color: var(--secondary-color);
+    opacity: 0.6;
+    cursor: pointer;
+    font-size: 0.95rem;
+    padding: 4px;
+}
+
+.samples-close-btn:hover {
+    opacity: 1;
+}
+
+.samples-category-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.samples-category-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.6;
+}
+
+.samples-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.sample-chip {
+    padding: 6px 12px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    border-radius: 8px;
+    border: 1px solid rgba(128, 128, 128, 0.25);
+    background: rgba(128, 128, 128, 0.08);
+    color: var(--secondary-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.sample-chip:hover {
+    background: var(--tertiary-color);
+    color: #fff;
+    border-color: var(--tertiary-color);
+    transform: translateY(-1px);
+}
+
+.sample-chip.active-chip {
+    background: var(--tertiary-color);
+    color: #fff;
+    border-color: var(--tertiary-color);
+}
+
+/* Camera Scanner Container */
+.camera-scanner-panel {
+    position: relative;
+    width: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    animation: fadeIn 0.3s ease-out;
+}
+
+.scanner-video {
+    width: 100%;
+    max-height: 320px;
+    object-fit: cover;
+    display: block;
+}
+
+.scanner-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.scanner-reticle {
+    width: 75%;
+    max-width: 280px;
+    height: 130px;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.45);
+}
+
+.scanner-laser {
+    position: absolute;
+    left: 4px;
+    right: 4px;
+    height: 2px;
+    background: var(--tertiary-color);
+    box-shadow: 0 0 8px var(--tertiary-color);
+    animation: scanLine 2s infinite ease-in-out alternate;
+}
+
+@keyframes scanLine {
+    0% {
+        top: 10%;
+    }
+    100% {
+        top: 88%;
+    }
+}
+
+.scanner-controls {
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    pointer-events: auto;
+}
+
+.scanner-ctrl-btn {
+    background: rgba(0, 0, 0, 0.65);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: all 0.2s;
+}
+
+.scanner-ctrl-btn:hover {
+    background: var(--tertiary-color);
+    border-color: var(--tertiary-color);
+}
+
+.scanner-status-msg {
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    text-align: center;
+    background: rgba(207, 102, 121, 0.15);
+    color: var(--tertiary-color);
+    border: 1px solid rgba(207, 102, 121, 0.3);
+}
+
+/* ─────────────────────────────────────────────────────────
+   Interactive Stage: Digit Breakdown with Brackets & Direct Input
+   ───────────────────────────────────────────────────────── */
+.barcode-stage-container {
+    position: relative;
+    width: 100%;
+    cursor: text;
+}
+
+.barcode-stage {
+    position: relative;
+    height: 380px;
+    border-radius: 16px;
+    background: rgba(128, 128, 128, 0.05);
+    border: 2px solid rgba(128, 128, 128, 0.2);
+    padding: 12px 14px;
+    overflow: hidden;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, height 0.25s ease;
+}
+
+.barcode-stage.is-focused {
+    border-color: var(--tertiary-color);
+    box-shadow: 0 0 0 3px rgba(207, 102, 121, 0.15);
+}
+
+/* Hidden full-capture input */
+.hidden-stage-input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 1px;
+    height: 1px;
+    left: 0;
+    top: 0;
+}
+
+/* Interactive Digits row */
+.digits-row {
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    top: 200px;
+    height: 52px;
+    display: grid;
+    grid-template-columns: repeat(var(--total-digits, 13), 1fr);
+    gap: 4px;
+    cursor: pointer;
+}
+
+.digit-box {
+    border-radius: 8px;
+    border: 1.5px dashed rgba(128, 128, 128, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    background: transparent;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    user-select: none;
+    position: relative;
+}
+
+.digit-placeholder {
+    opacity: 0.25;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.digit-box.filled {
+    border-style: solid;
+    background: var(--body-background-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+}
+
+.digit-box.prefix-digit {
+    border-color: #2563eb;
+    color: #2563eb;
+}
+
+.dark-theme .digit-box.prefix-digit {
+    border-color: #60a5fa;
+    color: #60a5fa;
+}
+
+.digit-box.body-digit {
+    border-color: var(--tertiary-color);
+    color: var(--tertiary-color);
+}
+
+.digit-box.chk-valid {
+    border-color: #16a34a;
+    color: #16a34a;
+}
+
+.dark-theme .digit-box.chk-valid {
+    border-color: #4ade80;
+    color: #4ade80;
+}
+
+.digit-box.chk-invalid {
+    border-color: #dc2626;
+    color: #dc2626;
+}
+
+/* Blinking cursor on active focused box */
+.digit-box.active-cursor {
+    border-color: var(--tertiary-color);
+    box-shadow: 0 0 0 2px rgba(207, 102, 121, 0.25);
+}
+
+.digit-box.active-cursor::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 60%;
+    background-color: var(--tertiary-color);
+    animation: blinkCursor 1s infinite;
+}
+
+@keyframes blinkCursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* ─────────────────────────────────────────────────────────
+   Brackets & Visual Annotations (Left-Aligned like VINART reference)
+   ───────────────────────────────────────────────────────── */
+.bracket-anno,
+.bracket-anno-bottom {
+    position: absolute;
+    left: calc(var(--s) * (100% - 28px) / var(--total-digits, 13) + 14px);
+    width: calc(var(--n) * (100% - 28px) / var(--total-digits, 13));
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bracket-anno.is-visible,
+.bracket-anno-bottom.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.bracket-anno {
+    bottom: 188px;
+    height: var(--h);
+}
+
+.bracket-anno-bottom {
+    top: 260px;
+    height: 52px;
+}
+
+.bracket-frame,
+.bracket-stem {
+    position: absolute;
+    background: none;
+}
+
+.bracket-anno .bracket-frame {
+    left: 2px;
+    right: 2px;
+    bottom: 0;
+    height: 10px;
+    border: 2px solid var(--bracket-color, var(--tertiary-color));
+    border-bottom: 0;
+    border-radius: 6px 6px 0 0;
+}
+
+/* Vertical Stems rise over the FIRST digit on the LEFT of each bracket */
+.bracket-anno .bracket-stem {
+    left: calc(50% / var(--n));
+    top: 0;
+    bottom: 10px;
+    width: 2px;
+    background: var(--bracket-color, var(--tertiary-color));
+    border: none;
+}
+
+/* CIRCLE DOT: Mathematically centered on top of the vertical stem */
+.bracket-anno .bracket-stem::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--bracket-color, var(--tertiary-color));
+    box-shadow: 0 0 6px var(--bracket-color, var(--tertiary-color));
+}
+
+.bracket-anno-bottom .bracket-frame {
+    left: 2px;
+    right: 2px;
+    top: 0;
+    height: 10px;
+    border: 2px solid var(--bracket-color, var(--tertiary-color));
+    border-top: 0;
+    border-radius: 0 0 6px 6px;
+}
+
+.bracket-anno-bottom .bracket-stem {
+    left: 50%;
+    top: 10px;
+    bottom: 0;
+    width: 2px;
+    background: var(--bracket-color, var(--tertiary-color));
+    border: none;
+}
+
+/* CIRCLE DOT: Mathematically centered at the bottom of the check digit stem */
+.bracket-anno-bottom .bracket-stem::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--bracket-color, var(--tertiary-color));
+    box-shadow: 0 0 6px var(--bracket-color, var(--tertiary-color));
+}
+
+/* Bracket Labels: Strictly LEFT-ALIGNED starting right next to the left stem */
+.bracket-label {
+    position: absolute;
+    font-size: 0.94rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--secondary-color);
+    text-align: left !important;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    white-space: nowrap;
+}
+
+.bracket-label .bracket-title {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    text-align: left !important;
+    font-weight: 700;
+}
+
+.bracket-label small {
+    display: block;
+    font-weight: 400;
+    font-size: 0.78rem;
+    opacity: 0.75;
+    text-align: left !important;
+    margin-top: 2px;
+}
+
+/* Top Bracket Labels: Anchor to the vertical stem with dot on the left */
+.bracket-anno .bracket-label {
+    left: calc(50% / var(--n) + 12px);
+    top: 0;
+    transform: translateY(-50%);
+    text-align: left !important;
+    max-width: calc(100vw - 80px);
+}
+
+/* Bottom Check Digit Label: Sits to the left of the check digit stem */
+.bracket-anno-bottom .bracket-label {
+    right: calc(50% + 12px);
+    bottom: 0;
+    transform: translateY(50%);
+    text-align: right !important;
+    align-items: flex-end;
+    white-space: nowrap;
+}
+
+/* Bottom horizontal subtext (like "Describes the vehicle's build" in VINART) */
+.bottom-bracket-subtext {
+    position: absolute;
+    top: 14px;
+    left: 4px;
+    font-size: 0.78rem;
+    color: var(--secondary-color);
+    opacity: 0.65;
+    text-align: left !important;
+    white-space: nowrap;
+}
+
+/* Instant identification badge while typing */
+.instant-country-badge {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: rgba(37, 99, 235, 0.1);
+    border: 1.5px solid rgba(37, 99, 235, 0.25);
+    color: var(--secondary-color);
+    font-size: 0.92rem;
+    font-weight: 600;
+    animation: fadeIn 0.25s ease-out;
+}
+
+.dark-theme .instant-country-badge {
+    background: rgba(96, 165, 250, 0.12);
+    border-color: rgba(96, 165, 250, 0.3);
+}
+
+.badge-country-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.badge-progress-count {
+    font-size: 0.8rem;
+    font-weight: 500;
+    opacity: 0.75;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Product Result Details Card
+   ───────────────────────────────────────────────────────── */
+.product-card {
+    background: var(--quaternary-color);
+    border: 2px solid rgba(128, 128, 128, 0.2);
+    border-radius: 16px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    animation: fadeIn 0.3s ease-out;
+}
+
+.product-card-top {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.product-photo-wrap {
+    width: 90px;
+    height: 90px;
+    border-radius: 12px;
+    background: rgba(128, 128, 128, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.product-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-photo-fallback {
+    font-size: 2.2rem;
+    color: var(--tertiary-color);
+    opacity: 0.6;
+}
+
+.product-headline {
+    flex: 1;
+    min-width: 0;
+}
+
+.product-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 4px;
+    color: var(--secondary-color);
+    line-height: 1.3;
+}
+
+.product-brand {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--tertiary-color);
+    margin: 0 0 6px;
+}
+
+.product-badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.badge-country {
+    background: rgba(37, 99, 235, 0.12);
+    color: #2563eb;
+    border: 1px solid rgba(37, 99, 235, 0.25);
+}
+
+.dark-theme .badge-country {
+    background: rgba(96, 165, 250, 0.15);
+    color: #93c5fd;
+    border-color: rgba(96, 165, 250, 0.3);
+}
+
+.badge-valid {
+    background: rgba(22, 163, 74, 0.12);
+    color: #16a34a;
+    border: 1px solid rgba(22, 163, 74, 0.25);
+}
+
+.dark-theme .badge-valid {
+    background: rgba(74, 222, 128, 0.15);
+    color: #4ade80;
+    border-color: rgba(74, 222, 128, 0.3);
+}
+
+.badge-invalid {
+    background: rgba(220, 38, 38, 0.12);
+    color: #dc2626;
+    border: 1px solid rgba(220, 38, 38, 0.25);
+}
+
+.badge-source {
+    background: rgba(128, 128, 128, 0.12);
+    color: var(--secondary-color);
+    border: 1px solid rgba(128, 128, 128, 0.25);
+}
+
+.badge-nutri {
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.nutri-a { background: #038141; color: #fff; }
+.nutri-b { background: #85bb2f; color: #fff; }
+.nutri-c { background: #fecb02; color: #000; }
+.nutri-d { background: #ee8100; color: #fff; }
+.nutri-e { background: #e63e11; color: #fff; }
+
+/* Key Value Grid */
+.product-details-grid {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgba(128, 128, 128, 0.2);
+    padding-top: 10px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.12);
+    font-size: 0.92rem;
+    gap: 16px;
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--secondary-color);
+    opacity: 0.75;
+    font-weight: 500;
+    flex-shrink: 0;
+}
+
+.detail-value {
+    font-weight: 600;
+    text-align: right;
+    color: var(--secondary-color);
+    word-break: break-word;
+}
+
+.detail-value.highlight-origin {
+    color: var(--tertiary-color);
+}
+
+.distinction-callout {
+    margin-top: 4px;
+    padding: 10px 14px;
+    background: rgba(128, 128, 128, 0.08);
+    border-left: 3px solid var(--tertiary-color);
+    border-radius: 6px;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    color: var(--secondary-color);
+    opacity: 0.85;
+}
+
+/* Quick Search Actions Row */
+.product-search-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(128, 128, 128, 0.2);
+}
+
+.search-action-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    opacity: 0.75;
+    margin-right: 4px;
+}
+
+.search-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    background: rgba(128, 128, 128, 0.1);
+    color: var(--secondary-color);
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    transition: all 0.2s ease;
+}
+
+.search-action-btn:hover {
+    background: var(--tertiary-color);
+    color: #fff;
+    border-color: var(--tertiary-color);
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+/* Scan History */
+.scan-history-section {
+    margin-top: 8px;
+    padding-top: 12px;
+    border-top: 1px dashed rgba(128, 128, 128, 0.25);
+}
+
+.history-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    opacity: 0.75;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.history-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.history-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    background: rgba(128, 128, 128, 0.1);
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    color: var(--secondary-color);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.history-chip:hover {
+    background: var(--tertiary-color);
+    color: #fff;
+    border-color: var(--tertiary-color);
+}
+
+/* ─────────────────────────────────────────────────────────
+   Mobile Responsive Adjustments (Taller Stage for Breathing Room)
+   ───────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+    .barcode-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .toolbar-left,
+    .toolbar-right {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .toolbar-btn {
+        flex: 1;
+        padding: 9px 6px;
+        font-size: 0.8rem;
+    }
+
+    /* TALLER STAGE ON MOBILE TO PREVENT OVERLAPPING */
+    .barcode-stage {
+        height: 410px;
+        padding: 12px 4px;
+    }
+
+    .digits-row {
+        left: 4px;
+        right: 4px;
+        top: 220px;
+        gap: 2px;
+        height: 48px;
+    }
+
+    .digit-box {
+        font-size: 1rem;
+        border-radius: 6px;
+    }
+
+    .bracket-anno,
+    .bracket-anno-bottom {
+        left: calc(var(--s) * (100% - 8px) / var(--total-digits, 13) + 4px);
+        width: calc(var(--n) * (100% - 8px) / var(--total-digits, 13));
+    }
+
+    .bracket-anno {
+        bottom: 195px;
+    }
+
+    .bracket-anno-bottom {
+        top: 278px;
+        height: 60px;
+    }
+
+    .bracket-label {
+        font-size: 0.82rem;
+    }
+
+    .bracket-label small {
+        font-size: 0.7rem;
+    }
+
+    .product-card-top {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .product-photo-wrap {
+        width: 100px;
+        height: 100px;
+    }
+
+    .product-badge-row {
+        justify-content: center;
+    }
+
+    .detail-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+    }
+
+    .detail-value {
+        text-align: left;
+    }
+
+    .product-search-actions {
+        justify-content: center;
+    }
+
+    .nutrient-cards-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .health-badges-row {
+        flex-direction: column;
+    }
+}
+
+/* ─────────────────────────────────────────────────────────
+   Food Nutrition, Ingredients & Health Information Panel
+   ───────────────────────────────────────────────────────── */
+.food-info-section {
+    margin-top: 14px;
+    border-top: 1px solid rgba(128, 128, 128, 0.2);
+    padding-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.food-info-toggle-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: rgba(207, 102, 121, 0.08);
+    border: 1.5px solid rgba(207, 102, 121, 0.3);
+    border-radius: 10px;
+    color: var(--secondary-color);
+    font-size: 0.92rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.food-info-toggle-btn:hover {
+    background: rgba(207, 102, 121, 0.16);
+    border-color: var(--tertiary-color);
+}
+
+.food-info-toggle-btn.active {
+    background: var(--tertiary-color);
+    color: #fff;
+    border-color: var(--tertiary-color);
+}
+
+.food-btn-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.food-nutrition-panel {
+    background: rgba(128, 128, 128, 0.04);
+    border: 1px solid rgba(128, 128, 128, 0.18);
+    border-radius: 12px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    animation: fadeIn 0.25s ease-out;
+}
+
+/* Traffic Light Health Parameters Grid */
+.nutrient-traffic-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nutrition-section-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.section-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.traffic-light-legend {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.76rem;
+    font-weight: 600;
+}
+
+.legend-tag.tag-low {
+    color: #16a34a;
+}
+
+.legend-tag.tag-moderate {
+    color: #d97706;
+}
+
+.legend-tag.tag-high {
+    color: #dc2626;
+}
+
+.nutrient-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.nutrient-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px 8px;
+    border-radius: 10px;
+    border: 1.5px solid rgba(128, 128, 128, 0.2);
+    background: var(--body-background-color);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s ease;
+}
+
+.nutrient-card:hover {
+    transform: translateY(-2px);
+}
+
+.nutrient-card-name {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+    opacity: 0.85;
+    margin-bottom: 4px;
+}
+
+.nutrient-card-amount {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--secondary-color);
+    margin-bottom: 6px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.nutrient-pill {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    padding: 3px 8px;
+    border-radius: 6px;
+}
+
+/* Traffic Light Tints */
+.nutrient-card.card-low {
+    border-color: rgba(22, 163, 74, 0.35);
+    background: rgba(22, 163, 74, 0.05);
+}
+
+.nutrient-pill.pill-low {
+    background: rgba(22, 163, 74, 0.18);
+    color: #16a34a;
+}
+
+.dark-theme .nutrient-pill.pill-low {
+    color: #4ade80;
+    background: rgba(74, 222, 128, 0.15);
+}
+
+.nutrient-card.card-moderate {
+    border-color: rgba(217, 119, 6, 0.35);
+    background: rgba(217, 119, 6, 0.05);
+}
+
+.nutrient-pill.pill-moderate {
+    background: rgba(217, 119, 6, 0.18);
+    color: #d97706;
+}
+
+.dark-theme .nutrient-pill.pill-moderate {
+    color: #fbbf24;
+    background: rgba(251, 191, 36, 0.15);
+}
+
+.nutrient-card.card-high {
+    border-color: rgba(220, 38, 38, 0.35);
+    background: rgba(220, 38, 38, 0.05);
+}
+
+.nutrient-pill.pill-high {
+    background: rgba(220, 38, 38, 0.18);
+    color: #dc2626;
+}
+
+.dark-theme .nutrient-pill.pill-high {
+    color: #f87171;
+    background: rgba(248, 113, 113, 0.15);
+}
+
+.nutrient-card.card-neutral {
+    border-color: rgba(128, 128, 128, 0.2);
+}
+
+.nutrient-pill.pill-neutral {
+    background: rgba(128, 128, 128, 0.15);
+    color: var(--secondary-color);
+}
+
+/* Nutriments Metric Chips (Calories, Fiber, Protein) */
+.nutriment-metrics-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.metric-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: rgba(128, 128, 128, 0.08);
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    font-size: 0.82rem;
+}
+
+.metric-label {
+    opacity: 0.8;
+}
+
+.metric-val {
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+/* Nutri-Score & NOVA Badges */
+.health-badges-row {
+    display: flex;
+    gap: 10px;
+}
+
+.score-badge-card {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    background: var(--body-background-color);
+}
+
+.score-badge-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 54px;
+}
+
+.score-badge-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    opacity: 0.8;
+}
+
+.score-badge-grade {
+    font-size: 1.3rem;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+}
+
+.score-badge-desc {
+    font-size: 0.82rem;
+    line-height: 1.35;
+    opacity: 0.9;
+}
+
+/* Nutri-Score Specific Shades */
+.score-badge-card.score-a .score-badge-grade { color: #038141; }
+.score-badge-card.score-a { border-color: rgba(3, 129, 65, 0.3); background: rgba(3, 129, 65, 0.05); }
+
+.score-badge-card.score-b .score-badge-grade { color: #85bb2f; }
+.score-badge-card.score-b { border-color: rgba(133, 187, 47, 0.3); background: rgba(133, 187, 47, 0.05); }
+
+.score-badge-card.score-c .score-badge-grade { color: #fecb02; }
+.score-badge-card.score-c { border-color: rgba(254, 203, 2, 0.3); background: rgba(254, 203, 2, 0.05); }
+
+.score-badge-card.score-d .score-badge-grade { color: #ee8100; }
+.score-badge-card.score-d { border-color: rgba(238, 129, 0, 0.3); background: rgba(238, 129, 0, 0.05); }
+
+.score-badge-card.score-e .score-badge-grade { color: #e63e11; }
+.score-badge-card.score-e { border-color: rgba(230, 62, 17, 0.3); background: rgba(230, 62, 17, 0.05); }
+
+/* NOVA Card Shades */
+.score-badge-card.nova-card.nova-1 .score-badge-grade { color: #16a34a; }
+.score-badge-card.nova-card.nova-2 .score-badge-grade { color: #d97706; }
+.score-badge-card.nova-card.nova-3 .score-badge-grade { color: #ea580c; }
+.score-badge-card.nova-card.nova-4 .score-badge-grade { color: #dc2626; }
+
+/* Ingredients Box */
+.ingredients-box {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 12px;
+    border-radius: 9px;
+    background: rgba(128, 128, 128, 0.06);
+    border: 1px dashed rgba(128, 128, 128, 0.25);
+}
+
+.ingredients-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+.ingredients-content {
+    margin: 0;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    color: var(--secondary-color);
+    opacity: 0.9;
+}
+
+/* Allergens Callout */
+.allergens-callout {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 9px 12px;
+    border-radius: 9px;
+    background: rgba(217, 119, 6, 0.1);
+    border: 1px solid rgba(217, 119, 6, 0.3);
+    color: #d97706;
+    font-size: 0.82rem;
+    line-height: 1.4;
+}
+
+.dark-theme .allergens-callout {
+    color: #fbbf24;
+}
+

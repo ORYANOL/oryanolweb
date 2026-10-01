@@ -677,3 +677,11 @@ button:active {
     align-items: center;
     justify-content: center;
 }
+
+/* Global Mobile Layout Optimization to prevent cramped tools */
+@media (max-width: 768px) {
+    .container-fluid {
+        padding-left: 6px !important;
+        padding-right: 6px !important;
+    }
+}

@@ -165,7 +165,7 @@
 @media (max-width: 850px) {
     .tools-layout {
         flex-direction: column;
-        gap: 20px;
+        gap: 16px;
     }
 
     .tools-sidebar {
@@ -175,24 +175,24 @@
         flex-wrap: wrap;
         /* Replaces the slider with a wrapped layout */
         justify-content: center;
-        gap: 10px;
+        gap: 8px;
         padding-bottom: 5px;
     }
 
     .tool-nav-btn {
-        flex: 1 1 calc(33.333% - 10px);
-        padding: 12px 10px;
-        font-size: 0.95rem;
+        flex: 1 1 calc(33.333% - 8px);
+        padding: 10px 8px;
+        font-size: 0.9rem;
         flex-direction: column;
         /* Stack icon and text */
         justify-content: center;
         text-align: center;
-        gap: 8px;
+        gap: 6px;
     }
 
     .active-tool-container {
-        padding: 24px 15px;
-        /* Adjusted padding to give the content more room */
+        padding: 16px 8px;
+        /* Generous room for tool content */
         width: 100%;
         box-sizing: border-box;
     }
@@ -203,21 +203,25 @@
 }
 
 @media (max-width: 600px) {
+    .io-web-tools-container {
+        padding: 12px 4px;
+    }
+
     .tool-nav-btn {
-        flex: 1 1 calc(50% - 10px);
+        flex: 1 1 calc(50% - 6px);
         /* 2 columns on smaller screens */
-        padding: 10px 8px;
-        font-size: 0.9rem;
+        padding: 8px 6px;
+        font-size: 0.85rem;
     }
 }
 
 @media (max-width: 500px) {
     .io-web-tools-container {
-        padding: 15px 10px;
+        padding: 10px 2px;
     }
 
     .active-tool-container {
-        padding: 20px 10px;
-        /* Minimal padding on very small screens to maximize inner space */
+        padding: 14px 4px;
+        border-radius: 12px;
     }
 }

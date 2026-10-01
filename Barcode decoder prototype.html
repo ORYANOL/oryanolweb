@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Barcode decoder prototype</title>
+<style>
+:root{--bg:#f4f5f7;--ink:#14171c;--mute:#667085;--box:#fff;--line:#d5d9e0;--pre:#2563eb;--body:#64748b;--ok:#16a34a;--bad:#dc2626;--card:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000;--ink:#f2f4f7;--mute:#98a2b3;--box:#0b1220;--line:#27324a;--pre:#4f8cff;--body:#8a97ad;--ok:#34d058;--bad:#ff6b6b;--card:#0d1117}}
+:root[data-theme="dark"]{--bg:#000;--ink:#f2f4f7;--mute:#98a2b3;--box:#0b1220;--line:#27324a;--pre:#4f8cff;--body:#8a97ad;--ok:#34d058;--bad:#ff6b6b;--card:#0d1117}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-text-size-adjust:100%}
+main{max-width:460px;margin:0 auto;padding:20px 16px 40px}
+h1{font-size:24px;margin:4px 0 14px;letter-spacing:-.02em}
+.row{display:flex;gap:8px}
+input{flex:1;min-width:0;font:600 18px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--box);color:var(--ink)}
+input:focus-visible,button:focus-visible{outline:2px solid var(--pre);outline-offset:2px}
+button{font:600 15px inherit;font-family:inherit;border:1px solid var(--line);background:var(--box);color:var(--ink);border-radius:12px;padding:0 14px;cursor:pointer}
+button.go{background:var(--pre);border-color:var(--pre);color:#fff}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 0}
+.chips button{font-size:13px;padding:7px 11px;border-radius:999px;color:var(--mute)}
+#note{min-height:20px;color:var(--mute);font-size:13px;margin:10px 0 0}
+video{width:100%;border-radius:12px;margin-top:10px;background:#000}
+.stage{position:relative;height:330px;margin-top:8px}
+.digits{position:absolute;left:0;right:0;top:200px;height:44px;display:grid;grid-template-columns:repeat(13,1fr)}
+.d{margin:0 1.5px;border-radius:7px;border:1.5px dashed var(--line);display:grid;place-items:center;font:600 17px ui-monospace,SFMono-Regular,Menlo,monospace;transition:background .15s,border-color .15s}
+.d.f{border-style:solid;background:var(--box)}
+.d.p{border-color:var(--pre)}.d.b{border-color:var(--body)}.d.ok{border-color:var(--ok)}.d.bad{border-color:var(--bad)}
+.a,.ab{position:absolute;left:calc(var(--s)*100%/13);width:calc(var(--n)*100%/13);opacity:0;transition:opacity .4s ease var(--t,0s)}
+.on .a,.on .ab{opacity:1}
+.a{bottom:130px;height:var(--h)}
+.ab{top:250px;height:56px}
+.br,.st{position:absolute;background:none;border:2px solid var(--c)}
+.a .br{left:3px;right:3px;bottom:0;height:9px;border-bottom:0;border-radius:5px 5px 0 0}
+.a .st{left:50%;margin-left:-1px;top:0;bottom:9px;width:0;border-width:0 0 0 2px}
+.ab .br{left:3px;right:3px;top:0;height:9px;border-top:0;border-radius:0 0 5px 5px}
+.ab .st{left:50%;margin-left:-1px;top:9px;bottom:0;width:0;border-width:0 0 0 2px}
+.lb{position:absolute;white-space:nowrap;font-size:15px;font-weight:600;line-height:1.25}
+.lb small{display:block;font-weight:400;font-size:12px;color:var(--mute)}
+.a .lb{left:50%;top:0;transform:translate(10px,-50%)}
+.ab .lb{right:50%;bottom:0;transform:translate(-10px,50%);text-align:right}
+.a .lb::before{content:"";position:absolute;left:-14px;top:50%;width:7px;height:7px;margin-top:-3px;border-radius:50%;background:var(--c)}
+.empty{position:absolute;inset:0 0 auto;top:60px;text-align:center;color:var(--mute);font-size:14px;transition:opacity .2s}
+.on .empty{opacity:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:4px 16px;margin-top:8px;display:none}
+.card.on{display:block}
+.card div{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:15px}
+.card div:last-child{border:0}
+.card span{color:var(--mute)}.card b{text-align:right}
+.fine{font-size:12px;color:var(--mute);margin-top:12px;line-height:1.5}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+<h1>What are you scanning?</h1>
+<div class="row"><input id="in" inputmode="numeric" autocomplete="off" placeholder="13-digit barcode" aria-label="Barcode number"><button id="cam" class="go" type="button">Scan</button></div>
+<div class="chips" id="chips"></div>
+<div id="note"></div>
+<video id="v" playsinline muted hidden></video>
+<div class="stage" id="stage">
+<div class="empty">Type 13 digits or tap a sample</div>
+<div class="a" id="a1" style="--s:0;--n:3;--h:175px;--c:var(--pre);--t:.1s"><i class="st"></i><i class="br"></i><div class="lb" id="l1"></div></div>
+<div class="a" id="a2" style="--s:3;--n:9;--h:100px;--c:var(--body);--t:.3s"><i class="st"></i><i class="br"></i><div class="lb" id="l2"></div></div>
+<div class="digits" id="digits"></div>
+<div class="ab" id="a3" style="--s:12;--n:1;--c:var(--ok);--t:.5s"><i class="st"></i><i class="br"></i><div class="lb" id="l3"></div></div>
+</div>
+<div class="card" id="card"></div>
+<p class="fine">Prototype: product data below is a three-item sample set. The real tool would look barcodes up in Open Food Facts via the Worker proxy.</p>
+</main>
+<script>
+const $=s=>document.getElementById(s);
+const DB={
+"3017620422003":{n:"Nutella",b:"Ferrero",c:"Hazelnut spread",o:"France"},
+"5449000000996":{n:"Coca-Cola Original Taste",b:"The Coca-Cola Company",c:"Soft drink",o:"Belgium"},
+"5000157024671":{n:"Baked Beans in Tomato Sauce",b:"Heinz",c:"Canned beans",o:null}
+};
+const P=[[0,13,"US & Canada","🇺🇸"],[30,37,"France","🇫🇷"],[40,44,"Germany","🇩🇪"],[45,45,"Japan","🇯🇵"],[49,49,"Japan","🇯🇵"],[50,50,"United Kingdom","🇬🇧"],[54,54,"Belgium","🇧🇪"],[57,57,"Denmark","🇩🇰"],[69,69,"China","🇨🇳"],[73,73,"Sweden","🇸🇪"],[76,76,"Switzerland","🇨🇭"],[80,83,"Italy","🇮🇹"],[84,84,"Spain","🇪🇸"],[87,87,"Netherlands","🇳🇱"],[89,89,"India","🇮🇳"],[93,94,"Australia / NZ","🇦🇺"]];
+const country=v=>{if(/^97[89]/.test(v))return{n:"Books (ISBN)",f:"📘"};const k=+v.slice(0,2),m=P.find(p=>k>=p[0]&&k<=p[1]);return m?{n:m[2],f:m[3]}:{n:"another GS1 registry",f:"🌐"}};
+const chk=s=>{let t=0;for(let i=0;i<12;i++)t+=+s[i]*(i%2?3:1);return(10-t%10)%10};
+digits.innerHTML=Array.from({length:13},()=>'<div class="d"></div>').join("");
+const boxes=[...digits.children];
+const esc=s=>String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+function render(){
+  const v=$("in").value.replace(/\D/g,"").slice(0,13);
+  $("in").value=v;
+  boxes.forEach((b,i)=>{b.textContent=v[i]||"";b.className="d"+(v[i]?" f":"")+(i<3?" p":i<12?" b":"")});
+  const full=v.length===13,st=$("stage"),card=$("card");
+  st.classList.toggle("on",full);card.classList.toggle("on",full);
+  if(!full)return;
+  const c=country(v),ok=chk(v)===+v[12],hit=DB[v];
+  $("l1").innerHTML=`Registered in ${c.f} ${esc(c.n)}<small>from the barcode prefix</small>`;
+  $("l2").innerHTML=hit?`${esc(hit.n)}<small>${esc(hit.b)} · from lookup</small>`:`No product data<small>not in the sample set</small>`;
+  const col=ok?"var(--ok)":"var(--bad)";
+  $("a3").style.setProperty("--c",col);
+  boxes[12].classList.add(ok?"ok":"bad");
+  $("l3").innerHTML=ok?"✓ Check digit matches":`✗ Check digit should be ${chk(v)}`;
+  const origin=hit&&hit.o?["Made in",`${esc(hit.o)}`]:["Registered in",`${c.f} ${esc(c.n)}`];
+  card.innerHTML=hit?`<div><span>Product</span><b>${esc(hit.n)}</b></div><div><span>Brand</span><b>${esc(hit.b)}</b></div><div><span>Category</span><b>${esc(hit.c)}</b></div><div><span>${origin[0]}</span><b>${origin[1]}</b></div>`
+   :`<div><span>Product</span><b>Not found</b></div><div><span>Registered in</span><b>${c.f} ${esc(c.n)}</b></div><div><span>Note</span><b>Prefix is not place of manufacture</b></div>`;
+}
+$("in").addEventListener("input",render);
+[["Nutella","3017620422003"],["Coca-Cola","5449000000996"],["Heinz beans","5000157024671"],["Bad check digit","3017620422004"]].forEach(([l,c])=>{
+  const b=document.createElement("button");b.type="button";b.textContent=l;b.onclick=()=>{$("in").value=c;render()};$("chips").appendChild(b)});
+let stream=null,timer=null;
+function stop(){clearInterval(timer);if(stream)stream.getTracks().forEach(t=>t.stop());stream=null;$("v").hidden=true;$("cam").textContent="Scan"}
+$("cam").onclick=async()=>{
+  if(stream){stop();return}
+  if(!("BarcodeDetector"in window)){$("note").textContent="Camera scanning needs BarcodeDetector (Chrome on Android). The real build would add a ZXing fallback for Safari.";return}
+  try{
+    stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"environment"}});
+    const v=$("v");v.srcObject=stream;v.hidden=false;await v.play();$("cam").textContent="Stop";$("note").textContent="";
+    const det=new BarcodeDetector({formats:["ean_13","upc_a"]});
+    timer=setInterval(async()=>{try{const r=await det.detect(v);if(r.length){let c=r[0].rawValue;if(c.length===12)c="0"+c;$("in").value=c;render();stop()}}catch(e){}},300);
+  }catch(e){stop();$("note").textContent="Camera isn't available in this view. Type or tap a sample instead."}
+};
+render();
+</script>
+</body>
+</html>
