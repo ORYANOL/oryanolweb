@@ -8,9 +8,9 @@ const Home = () => {
   const { toggleDarkMode } = useContext(ThemeContext);
 
   return (
-    <div className="row text-center">
-      <div className="col-md-12">
-        <div className="text-center">
+    <div className="row text-center justify-content-center mx-0">
+      <div className="col-md-12 text-center">
+        <div className="d-flex justify-content-center align-items-center">
           <img
             src={profileImg}
             alt="Profile image"
